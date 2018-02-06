@@ -1,6 +1,8 @@
-local displayAtmBlips = true -- Affichier icones la ou il y'a des DAB
+-- Réglages
+local displayBankBlips = true -- Afficher les blips des banque sur la map (Par défaut: true)
+local displayAtmBlips = false -- Afficher les blips des DAB sur la map (Par défaut: false) // CE HYPER MOCHE ET PEUX FAIRE BUGER LES AUTRES Blips
 
--- ATMS
+-- DAB
 local atms = {
   {name="DAB", id=277, x=-386.733, y=6045.953, z=31.501},
   {name="DAB", id=277, x=-284.037, y=6224.385, z=31.187},
@@ -77,8 +79,29 @@ local atms = {
 
 }
 
--- Affichier icones sur la map
+-- BANQUES
+local banks = {
+  {name="Banque", id=108, x=150.266, y=-1040.203, z=29.374},
+  {name="Banque", id=108, x=-1212.980, y=-330.841, z=37.787},
+  {name="Banque", id=108, x=-2962.582, y=482.627, z=15.703},
+  {name="Banque", id=108, x=-112.202, y=6469.295, z=31.626},
+  {name="Banque", id=108, x=314.187, y=-278.621, z=54.170},
+  {name="Banque", id=108, x=-351.534, y=-49.529, z=49.042},
+  {name="Banque", id=108, x=241.727, y=220.706, z=106.286},
+}
+
+-- CONDITION POUR LES BLIPS SUR CARTE
 Citizen.CreateThread(function()
+  if (displayBankBlips == true) then
+    for _, item in pairs(banks) do
+      item.blip = AddBlipForCoord(item.x, item.y, item.z)
+      SetBlipSprite(item.blip, item.id)
+      SetBlipAsShortRange(item.blip, true)
+      BeginTextCommandSetBlipName("STRING")
+      AddTextComponentString(item.name)
+      EndTextCommandSetBlipName(item.blip)
+    end
+  end
   if (displayAtmBlips == true) then
     for _, item in pairs(atms) do
       item.blip = AddBlipForCoord(item.x, item.y, item.z)
