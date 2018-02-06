@@ -21,6 +21,5 @@ start dab_blips
 </ul>
 [A VENIR]
 <br><br>
-<li>Ajout du choix entre DAB ou Banque</li>
 <br>
 <li>Retirer des blips DAB quand plusieurs au meme endroit</li>
