@@ -20,6 +20,5 @@ start dab_blips
 </ul>
 </ul>
 [A VENIR]
-<br><br>
 <br>
 <li>Retirer des blips DAB quand plusieurs au meme endroit</li>
